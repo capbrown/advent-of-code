@@ -12,6 +12,24 @@ class Node(object):
         else:
             return
 
+    def is_you_child(self):
+        if self.value == "YOU":
+            return True
+        elif not self.children:
+            return False
+        for sc in self.children:
+            if sc.is_you_child():
+                return True
+
+    def is_san_child(self):
+        if self.value == "SAN":
+            return True
+        elif not self.children:
+            return False
+        for sc in self.children:
+            if sc.is_san_child():
+                return True
+
     def add_child(self, obj):
         self.children.append(obj)
 
@@ -45,3 +63,25 @@ for n in nodes:
     norbits += n.n
 
 print(norbits)
+
+i_you = 0
+i_san = 0
+for i, n in enumerate(nodes):
+    if n.value == "YOU": i_you = n.n
+    if n.value == "SAN": i_san = n.n
+
+
+def find_shared_parent(i_min):
+    while True:
+        for i, ni in enumerate(nodes):
+            if ni.n == i_min:
+                for c in ni.children:
+                    if c.is_you_child() and c.is_san_child():
+                        return c
+        i_min -= 1
+        if not i_min:
+            break
+
+
+shared_parent = find_shared_parent(min([i_you, i_san]) - 1)
+print(((i_you - 1) - shared_parent.n) + ((i_san - 1) - shared_parent.n))
