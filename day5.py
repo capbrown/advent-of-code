@@ -1,11 +1,10 @@
 import csv
 
 
-def computer(my_data, noun=None, verb=None, phase=None, input_n=None):
+def computer(my_data, noun=None, verb=None, phase=None, input_n=None, n=0, init=True):
     if noun and verb:
         my_data[1] = noun
         my_data[2] = verb
-    n = 0
     output_signal = 0
     auto_input_i = 0
     inputs = [phase, input_n, None]
@@ -36,6 +35,8 @@ def computer(my_data, noun=None, verb=None, phase=None, input_n=None):
             n += 4
 
         elif instruction == 3:
+            if not init:
+                auto_input_i += 1
             if inputs[auto_input_i] == None:
                 my_data[my_data[n + 1]] = int(input("Enter an integer: "))
             else:
@@ -46,6 +47,7 @@ def computer(my_data, noun=None, verb=None, phase=None, input_n=None):
         elif instruction == 4:
             output_signal = my_data[my_data[n + 1]]
             n += 2
+            return output_signal, my_data, n, False
 
         elif instruction == 5:
             first_param = my_data[my_data[n + 1]] if mode1 == 0 else my_data[n + 1]
@@ -90,7 +92,7 @@ def computer(my_data, noun=None, verb=None, phase=None, input_n=None):
         elif instruction == 99:
             break
 
-    return output_signal
+    return output_signal, my_data, n, True
 
 
 if __name__ == "__main__":
