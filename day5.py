@@ -1,11 +1,14 @@
 import csv
 
 
-def computer(my_data, noun=None, verb=None):
+def computer(my_data, noun=None, verb=None, phase=None, input_n=None):
     if noun and verb:
         my_data[1] = noun
         my_data[2] = verb
     n = 0
+    output_signal = 0
+    auto_input_i = 0
+    inputs = [phase, input_n, None]
     while True:
         current = my_data[n]
         instruction = current % 100
@@ -33,11 +36,15 @@ def computer(my_data, noun=None, verb=None):
             n += 4
 
         elif instruction == 3:
-            my_data[my_data[n + 1]] = int(input("Enter an integer: "))
+            if inputs[auto_input_i] == None:
+                my_data[my_data[n + 1]] = int(input("Enter an integer: "))
+            else:
+                my_data[my_data[n + 1]] = inputs[auto_input_i]
+                auto_input_i += 1
             n += 2
 
         elif instruction == 4:
-            print("Value at ", n + 1, " is ", my_data[my_data[n + 1]])
+            output_signal = my_data[my_data[n + 1]]
             n += 2
 
         elif instruction == 5:
@@ -82,16 +89,14 @@ def computer(my_data, noun=None, verb=None):
 
         elif instruction == 99:
             break
-        #print(current)
-        #print(mode1, mode2, mode3)
-        #print(my_data)
-        #print()
-    return my_data
+
+    return output_signal
 
 
-with open('inputs/day5.txt', 'r') as f:
-    reader = csv.reader(f)
-    my_dat = list(reader)[0]
-    my_dat = [int(n) for n in my_dat]
+if __name__ == "__main__":
+    with open('inputs/day5.txt', 'r') as f:
+        reader = csv.reader(f)
+        my_dat = list(reader)[0]
+        my_dat = [int(n) for n in my_dat]
 
-computer(my_dat)
+    computer(my_dat)
