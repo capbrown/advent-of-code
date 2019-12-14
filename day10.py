@@ -34,8 +34,12 @@ for asteroid in all_asteroids:
 
         # simplify angle 'fraction'
         if 0 in angle_to_asteroid:
-            new_y = angle_to_asteroid[0]
-            new_x = angle_to_asteroid[1]
+            if angle_to_asteroid[0] == 0:
+                new_y = angle_to_asteroid[0]
+                new_x = angle_to_asteroid[1] // np.abs(angle_to_asteroid[1])
+            else:
+                new_y = angle_to_asteroid[0] // np.abs(angle_to_asteroid[0])
+                new_x = angle_to_asteroid[1]
         else:
             f = Fraction(angle_to_asteroid[0], angle_to_asteroid[1])
             new_y = np.abs(f.numerator) * angle_to_asteroid[0] / np.abs(angle_to_asteroid[0])
