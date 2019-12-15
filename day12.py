@@ -1,4 +1,3 @@
-import numpy as np
 import re
 import math
 
@@ -50,12 +49,8 @@ print("Total energy =", energy)
 
 
 # part 2
-def n_steps(i):
-    lineList = [line.rstrip('\n') for line in open('inputs/day12.txt')]
-    positions = []
-    for string in lineList:
-        positions.append(tuple([int(c) for c in re.sub('[xyz<=,>]', '', string).split(' ')]))
-    velocities = [(0, 0, 0) for p in positions]
+def find_n_steps(positions, velocities, i):
+
     init = positions[:]
     initV = velocities[:]
     n = 0
@@ -80,6 +75,7 @@ def n_steps(i):
             v = velocities[m]
             positions[m] = (moon[0] + v[0], moon[1] + v[1], moon[2] + v[2])
 
+        # check whether we have returned to the initial values
         n += 1
         original_positions = [a[i] for a in init]
         original_velocities = [a[i] for a in initV]
@@ -91,10 +87,15 @@ def n_steps(i):
     return n
 
 
-a = n_steps(0)
-b = n_steps(1)
-c = n_steps(2)
-d = abs(a * b) // math.gcd(a, b)
-e = abs(d * c) // math.gcd(d, c)
+lineList = [line.rstrip('\n') for line in open('inputs/day12.txt')]
+positions = []
+for string in lineList:
+    positions.append(tuple([int(c) for c in re.sub('[xyz<=,>]', '', string).split(' ')]))
+velocities = [(0, 0, 0) for p in positions]
+n_steps_x = find_n_steps(positions, velocities, 0)
+n_steps_y = find_n_steps(positions, velocities, 1)
+n_steps_z = find_n_steps(positions, velocities, 2)
+lcm_x_y = abs(n_steps_x * n_steps_y) // math.gcd(n_steps_x, n_steps_y)
+lcm = abs(lcm_x_y * n_steps_z) // math.gcd(lcm_x_y, n_steps_z)
 
-print(e)
+print('# steps to return to initial state =', lcm)
