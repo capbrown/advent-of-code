@@ -36,5 +36,5 @@ if __name__ == "__main__":
 	with open(input02_file) as f:
 		lines = f.read().splitlines()
 	
-	print(day02_1(lines)
-	print(day02_2(lines)
+	print(day02_1(lines))
+	print(day02_2(lines))
