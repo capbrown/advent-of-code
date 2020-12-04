@@ -35,11 +35,9 @@ def fields_valid(passport):
 	eyr_valid = int(passport['eyr']) in range(2020, 2031)
 
 	height = passport['hgt']
-	h_num = int(re.sub("[^0-9]", "", height))
-	h_units = re.sub(r'\d+', '', height)
-	cm_valid = h_units == 'cm' and h_num in range(150, 194)
-	in_valid = h_units == 'in' and h_num in range(59,77)
-	height_valid = cm_valid or in_valid
+	cm_valid = len(height) == 5 and 'cm' in height and int(height[0:3]) in range(150, 194)
+	in_valid = len(height) == 4 and 'in' in height and int(height[0:2]) in range(59, 77)
+	hgt_valid = cm_valid or in_valid
 	
 	hcl = passport['hcl']
 	hcl_valid = hcl[0] == '#' and len(hcl) == 7 and all(c in string.hexdigits for c in hcl[1:])
@@ -47,7 +45,7 @@ def fields_valid(passport):
 	ecl_valid = passport['ecl'] in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 	pid_valid = passport['pid'].isdigit() and len(passport['pid']) == 9
 	
-	if all([byr_valid, iyr_valid, eyr_valid, height_valid, hcl_valid, ecl_valid, pid_valid]):
+	if all([byr_valid, iyr_valid, eyr_valid, hgt_valid, hcl_valid, ecl_valid, pid_valid]):
 		return True
 	return False
 	
