@@ -6,10 +6,9 @@ if __name__ == "__main__":
         lines_file = f.read().split('\n\n')
 
     # Part One
-    lines = [line.replace('\n', ' ') for line in lines_file]
-    lines = [line.replace(" ", "") for line in lines]
-    lines = [''.join(set(line)) for line in lines]
-    print(sum([len(line) for line in lines]))
+    lines = [line.replace('\n', '') for line in lines_file]
+    uniques_in_group = [''.join(set(line)) for line in lines]
+    print(sum([len(g) for g in uniques_in_group]))
 
     # Part Two
     lines = [line.split() for line in lines_file]
