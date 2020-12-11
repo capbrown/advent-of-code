@@ -40,3 +40,5 @@ if __name__ == '__main__':
         if 'shinygold' in l and l[0] != 'shinygold':
             s += 1
     print(s)
+
+
