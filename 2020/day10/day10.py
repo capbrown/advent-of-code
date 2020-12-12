@@ -22,8 +22,8 @@ if __name__ == "__main__":
     # Part Two
     answer = []
     lines = diffs.tolist()
-    for key, consecutives in itertools.groupby(lines):
-        ls = len(list(consecutives))
+    for key, consecutive_nums in itertools.groupby(lines):
+        ls = len(list(consecutive_nums))
         if key != 3 and ls != 1:
             answer.append(ls)
 
