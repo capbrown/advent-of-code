@@ -45,3 +45,48 @@ if __name__ == "__main__":
 
     print(abs(x) + abs(y))
 
+    # Part Two
+    x = 0
+    y = 0
+    wx = 10
+    wy = 1
+
+    directions = []
+    for line in lines:
+        direction = line[0]
+        amount = int(line[1:])
+        directions.append((direction, amount))
+
+    for dir in directions:
+        movement = dir[0]
+        amount = dir[1]
+        print(dir)
+        if movement == 'N':
+            wy += amount
+        elif movement == 'S':
+            wy -= amount
+        elif movement == 'E':
+            wx += amount
+        elif movement == 'W':
+            wx -= amount
+        elif movement == 'R':
+            if amount == 90:
+                wx, wy = wy, -wx
+            elif amount == 180:
+                wx, wy = -wx, -wy
+            if amount == 270:
+                wx, wy = -wy, wx
+        elif movement == 'L':
+            if amount == 90:
+                wx, wy = -wy, wx
+            elif amount == 180:
+                wx, wy = -wy, -wx
+            if amount == 270:
+                wx, wy = wy, -wx
+        elif movement == 'F':
+            y += amount*wy
+            x += amount*wx
+        print(x, y)
+        print(wx, wy)
+
+    print(abs(x) + abs(y))
