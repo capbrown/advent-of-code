@@ -51,7 +51,7 @@ def fields_valid(passport):
 	
 	
 if __name__ == "__main__":
-	input_file = 'input04.txt'
+	input_file = 'inputs/input04.txt'
 	with open(input_file) as f:
 		lines = f.read().split('\n\n')
 		lines = [line.replace('\n', ' ') for line in lines]

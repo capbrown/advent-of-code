@@ -28,7 +28,7 @@ def run(program):
 
 	
 if __name__ == "__main__":
-	with open("input08.txt") as f:
+	with open("inputs/input08.txt") as f:
 		lines = f.read().splitlines()
 	program = []
 	for line in lines:

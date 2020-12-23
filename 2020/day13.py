@@ -4,7 +4,7 @@ import numpy as np
 
 
 if __name__ == "__main__":
-    with open("input13.txt") as f:
+    with open("inputs/input13.txt") as f:
         lines = f.read().splitlines()
 
     earliest_timestamp = int(lines[0])

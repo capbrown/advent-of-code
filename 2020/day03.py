@@ -17,7 +17,7 @@ def day03(lines, right, down):
 
 	
 if __name__ == "__main__":
-	input_file = 'input03.txt'
+	input_file = 'inputs/input03.txt'
 	with open(input_file) as f:
 		lines = f.read().splitlines()
 	

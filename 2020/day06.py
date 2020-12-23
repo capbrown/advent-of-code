@@ -1,7 +1,7 @@
 # Advent of Code Day 6
 
 if __name__ == "__main__":
-    input_file = 'input06.txt'
+    input_file = 'inputs/input06.txt'
     with open(input_file) as f:
         lines_file = f.read().split('\n\n')
 

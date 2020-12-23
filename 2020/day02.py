@@ -32,7 +32,7 @@ def tokenize(line):
 	
 	
 if __name__ == "__main__":
-	input02_file = 'input02.txt'
+	input02_file = 'inputs/input02.txt'
 	with open(input02_file) as f:
 		lines = f.read().splitlines()
 	

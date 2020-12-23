@@ -15,7 +15,7 @@ def day01(input_file_name, n):
 
 
 if __name__ == '__main__':
-    input_file = 'input01.txt'
+    input_file = 'inputs/input01.txt'
 
     # Part One
     print(day01(input_file, 2))

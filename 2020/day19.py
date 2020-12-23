@@ -5,7 +5,7 @@ import re
 
 if __name__ == '__main__':
 
-    with open('input19.txt') as f:
+    with open('inputs/input19.txt') as f:
         lines = f.read().splitlines()
 
     all = {}

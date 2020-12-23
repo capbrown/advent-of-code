@@ -24,7 +24,7 @@ def contains_gold(rule, test):
 
 
 if __name__ == '__main__':
-    with open("input07.txt") as f:
+    with open("inputs/input07.txt") as f:
         test = f.read()
     ll = []
     test = test.splitlines()

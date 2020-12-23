@@ -19,7 +19,7 @@ def get_n_adjacent(grid, i, j):
 
 
 if __name__ == "__main__":
-    with open("input11.txt") as f:
+    with open("inputs/input11.txt") as f:
         lines = f.read().splitlines()
 
     # convert to numpy array

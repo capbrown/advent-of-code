@@ -4,7 +4,7 @@ import numpy as np
 
 
 if __name__ == "__main__":
-    with open("input12.txt") as f:
+    with open("inputs/input12.txt") as f:
         lines = f.read().splitlines()
 
     # Part One

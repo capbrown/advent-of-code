@@ -11,7 +11,7 @@ def is_sum(n, list_to_check):
 	
 if __name__ == "__main__":
 
-	with open("input09.txt") as f:
+	with open("inputs/input09.txt") as f:
 		lines = f.read().splitlines()
 	lines = [int(n) for n in lines]
 

@@ -1,7 +1,7 @@
 # Advent of Code Day 14
 
 
-with open('input14.txt') as f:
+with open('inputs/input14.txt') as f:
 	lines = f.read().splitlines()
 
 # Part One

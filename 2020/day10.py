@@ -6,7 +6,7 @@ import numpy as np
 from operator import mul
 
 if __name__ == "__main__":
-    with open("input10.txt") as f:
+    with open("inputs/input10.txt") as f:
         lines = f.read().splitlines()
     lines = [int(n) for n in lines]
     lines = [0] + lines + [max(lines) + 3]

@@ -2,7 +2,7 @@
 
 
 if __name__ == "__main__":
-    input_file = 'input05.txt'
+    input_file = 'inputs/input05.txt'
     with open(input_file) as f:
         passes = f.read().splitlines()
 
